@@ -11,7 +11,8 @@ s.x		- 2D (Nx by Ny) array of x locations. First index corresponds to x
 					3 3 3 3 3
 					4 4 4 4 4
 					5 5 5 5 5 ];
-			Notice that this is kinda backwards from the row/column format.  
+			Notice that this is kinda backwards from the row/column format.
+			But insures that everything is indexed (x,y)
 			I just picked this, does anyone have comments?
 s.y		- 2D array of y locations
 s.u		- 2D array of u velocities

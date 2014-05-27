@@ -1,28 +1,32 @@
-function [dudx dudy dvdx dvdy] = Diff4(dx, dy, u, v)
-[N M] = size(u);
-dudx = zeros(N,M);
-dudy = zeros(N,M);
-dvdx = zeros(N,M);
-dvdy = zeros(N,M);
+function [dudx dudy dvdx dvdy] = Diff4( s )
+% 4th order central differencing  for 1st derivative
+% Inputs:
+%     - s: vector field
+% Output:
+%     - dudx, etc.: scalar arrays of differences
+dudx = zeros(s.Nx,s.Ny);
+dudy = zeros(s.Nx,s.Ny);
+dvdx = zeros(s.Nx,s.Ny);
+dvdy = zeros(s.Nx,s.Ny);
 
 r = 2;
-for i = 3:N-2
-    for j = 3:M-2
-        if  ~( u(i,j) && u(i+r,j) && u(i-r,j) && u(i,j+r) && u(i,j-r) ...
-                && v(i,j) && v(i+r,j) && v(i-r,j) && v(i,j+r) && v(i,j-r))
+for i = 3:s.Nx-2
+    for j = 3:s.Ny-2
+        if  ~( s.u(i,j) && s.u(i+r,j) && s.u(i-r,j) && s.u(i,j+r) && s.u(i,j-r) ...
+                && s.v(i,j) && s.v(i+r,j) && s.v(i-r,j) && s.v(i,j+r) && s.v(i,j-r))
             dudx(i,j) = 0;
             dudy(i,j) = 0;
             dvdx(i,j) = 0;
             dvdy(i,j) = 0;
         else
-            dudx(i, j) = ( u(i-2,j) - 8*u(i-1, j) ...
-                + 8*u(i+1, j) - u(i+2,j) )/dx/12;
-            dudy(i, j) = ( u(i,j-2) - 8*u(i, j-1) ...
-                + 8*u(i, j+1) - u(i,j+2) )/dy/12;
-            dvdx(i, j) = ( v(i-2,j) - 8*v(i-1, j) ...
-                + 8*v(i+1, j) - v(i+2,j) )/dx/12;
-            dvdy(i, j) = ( v(i-2,j) - 8*v(i-1, j) ...
-                + 8*v(i+1, j) - v(i+2,j) )/dy/12;
+            dudx(i, j) = ( s.u(i-2,j) - 8*s.u(i-1, j) ...
+                + 8*s.u(i+1, j) - s.u(i+2,j) )/s.dx/12;
+            dudy(i, j) = ( s.u(i,j-2) - 8*s.u(i, j-1) ...
+                + 8*s.u(i, j+1) - s.u(i,j+2) )/s.dy/12;
+            dvdx(i, j) = ( s.v(i-2,j) - 8*s.v(i-1, j) ...
+                + 8*s.v(i+1, j) - s.v(i+2,j) )/s.dx/12;
+            dvdy(i, j) = ( s.v(i-2,j) - 8*s.v(i-1, j) ...
+                + 8*s.v(i+1, j) - s.v(i+2,j) )/s.dy/12;
         end
     end
 end
