@@ -10,8 +10,8 @@ function [ s ] = ReadVC7File( file )
 A = readimx(file);
 [s.x s.y s.u s.v] = showimx(A,1);
 [s.Ny s.Nx] = size(s.x);
-s.dx = abs( x(2,1) - x(1,1) );
-s.dy = abs( y(1,2) - y(1,1) );
+s.dx = abs( s.x(2,1) - s.x(1,1) );
+s.dy = abs( s.y(1,2) - s.y(1,1) );
 
 return
 

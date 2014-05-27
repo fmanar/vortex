@@ -29,10 +29,10 @@ s.Ny = data{5};
 s.Nx = data{6};
 
 % rest of file
-s.x = zeros(xpts,Ny);
-s.y = zeros(xpts,Ny);
-s.u = zeros(xpts,Ny);
-s.v = zeros(xpts,Ny);
+s.x = zeros(s.Nx, s.Ny);
+s.y = zeros(s.Nx, s.Ny);
+s.u = zeros(s.Nx, s.Ny);
+s.v = zeros(s.Nx, s.Ny);
 
 data = textscan(f,'%f %f %f %f');
 c = 1;
@@ -48,6 +48,6 @@ end
 
 fclose(f);
 
-s.dx = abs( x(2,1) - x(1,1) );
-s.dy = abs( y(1,2) - y(1,1) );
+s.dx = abs( s.x(2,1) - s.x(1,1) );
+s.dy = abs( s.y(1,2) - s.y(1,1) );
 return
