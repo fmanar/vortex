@@ -1,9 +1,0 @@
-vortex
-joneslab code for vortex identification and tracking
-
-please read 'standards.txt' for data structure layout and function handle
-  standards.
-
-organisation:
-  io - functions for reading and writing image and vector files
-  data - sample data sets
