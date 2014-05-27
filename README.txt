@@ -8,6 +8,9 @@ Work flow: Field recommends that any scripts you write using these functions be
 	kept in a seperate folder.  Matlab can be told about all of these functions
 	with an addpath() command.  Matlab can also be configured to add the path at
 	startup by adding the command to startup.m in the Documents/MATLAB folder.
+	
+	When editing this codebase, please create branch (fork?) the project so you
+	don't muddy other people's code.
 
 Folders:
   data - sample data sets
