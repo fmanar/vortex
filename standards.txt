@@ -2,14 +2,17 @@
 Vector field data structure:
 s.Nx	- number of x locations
 s.Ny	- number of y locations
-s.x		- 2D (Nx by Ny) array of x locations. First index corresponds to x location.
-			For example, a 5x5 image with x locations 1, 2, 3, 4, 5 would have an s.x that looks like:
+s.x		- 2D (Nx by Ny) array of x locations. First index corresponds to x 
+			location.
+			For example, a 5x5 image with x locations 1, 2, 3, 4, 5 would 
+			have an s.x that looks like:
 			s.x = [ 1 1 1 1 1 
 			        2 2 2 2 2
 					3 3 3 3 3
 					4 4 4 4 4
 					5 5 5 5 5 ];
-			Notice that this is kinda backwards from the row/column format.  I just picked this, does anyone have comments?
+			Notice that this is kinda backwards from the row/column format.  
+			I just picked this, does anyone have comments?
 s.y		- 2D array of y locations
 s.u		- 2D array of u velocities
 s.v		- 2D array of v velocities
@@ -17,7 +20,9 @@ s.dx	- the spacing between each x location
 s.dy    - the spacing between each y location
 Do we need variables for units?
 
-Function header: something like this... note that the first line of comment will show up in the Matlab "details" pane, so try to give a good short description of the function
+Function header: something like this... note that the first line of comment 
+will show up in the Matlab "details" pane, so try to give a good short 
+description of the function
 
 function [v d] = OrrSomerfeld( alpha, Re, N )
 % numerically solves the Eigenvalue problem for the Orr-Somerfeld eq.
