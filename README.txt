@@ -10,8 +10,8 @@ For using: Field recommends that any scripts you write using these functions be
 	configured to add the path at startup by adding the command to startup.m in the 
 	Documents/MATLAB folder.
 	
-For editing: When editing this codebase, please create branch (fork?) the project so you
-	don't muddy other people's code.
+For editing: When editing this codebase, please create branch the project from the 
+	developement branch so you don't muddy other people's code.
 
 Folders:
   data - sample data sets
