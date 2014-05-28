@@ -1,16 +1,20 @@
-% my derivation of the lambda 2 criterion
-% a long winded use of the quadratic formula for the eigenvalues of 
+function [ l2 ] = FindLambda2( s )
+% Field's derivation of the lambda 2 criterion
+% A long winded use of the quadratic formula for the eigenvalues of
 % A = S*S + O*O
-
-function [l2] = FindLambda2(dudx, dudy, dvdx, dvdy)
-[N M] = size(dudx);
-l2 = zeros(N,M);
-for i = 1:N
-    for j = 1:M
-        a = dudx(i,j);
-        b = dudy(i,j);
-        c = dvdx(i,j);
-        d = dvdy(i,j);
+% I'm going to need to refresh myself on this one.
+%
+% Inputs:
+%     - s: vector field with derivatives
+% Output:
+%     - l2: lambda 2 scalar field
+l2 = zeros(s.Nx,s.Ny);
+for i = 1:s.Nx
+    for j = 1:s.Ny
+        a = s.dudx(i,j);
+        b = s.dudy(i,j);
+        c = s.dvdx(i,j);
+        d = s.dvdy(i,j);
         
         beta = a*a + d*d + b*c;
         gamma1 = a^2*b*c + a^2*d^2 + b*c*d^2 + b^2*c^2;

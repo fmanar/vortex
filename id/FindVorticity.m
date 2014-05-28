@@ -1,20 +1,12 @@
-% Vorticity finder
+function [ omega ] = FindVorticity( s )
+% Computes vorticity
 % omega = grad cross u
+%
+% Inputs:
+%     - s: vector field with derivatives
+% Output:
+%     - omega: vorticity scalar field
 
-function [omega] = FindVorticity(dudy, dvdx)
-[N M] = size(dudy);
-omega = zeros(N,M);
-omegamax = 0;
-for i = 1:N
-    for j = 1:M
-        omega(i,j) = dudy(i,j) - dvdx(i,j);
-        
-        if omega(i,j) > omegamax
-            omegamax = omega(i,j);
-        end
-    end
-end
-
-% omega = omega/omegamax;
+omega = s.dudy - s.dvdx;
 
 return
