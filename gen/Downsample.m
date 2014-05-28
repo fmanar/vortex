@@ -1,21 +1,27 @@
-function [x y u v] = Downsample(x, y, u, v, new_dx)
+function [ out_s ] = Downsample( in_s , step )
+% thins out vector field taking every 'step' vector
+% won't effect any derivatives....
+%
+% Inputs:
+%     - in_s: vector field
+%     - step: the step to take along the vector field
+% Output:
+%     - out_s: the thinned out vector field
 
-new_xpts = floor( ( max(x(:,1)) - min(x(:,1)) )/new_dx );
-new_ypts = floor( ( max(y(1,:)) - min(y(1,:)) )/new_dx );
-
-minx = min(x(:,1));
-miny = min(y(1,:));
-x_tmp = zeros(new_xpts, new_ypts);
-y_tmp = zeros(new_xpts, new_ypts);
-for i = 1:new_xpts
-    for j = 1:new_ypts
-        x_tmp(i,j) = minx + i*new_dx;
-        y_tmp(i,j) = miny + j*new_dx;
+iIn = 1;
+iOut = 1;
+while iIn <= in_s.Nx
+    jIn = 1;
+    jOut = 1;
+    while jIn <= in_s.Ny
+        out_s.x(iOut,jOut) = in_s.x(iIn,jIn);
+        out_s.y(iOut,jOut) = in_s.y(iIn,jIn);
+        out_s.u(iOut,jOut) = in_s.u(iIn,jIn);
+        out_s.v(iOut,jOut) = in_s.v(iIn,jIn);
+        jIn = jIn + step;
+        jOut = jOut + 1;
     end
+    iIn = iIn + step;
+    iOut = iOut + 1;
 end
-u = interp2(y, x, u, y_tmp, x_tmp);
-v = interp2(y, x, v, y_tmp, x_tmp);
-x = x_tmp;
-y = y_tmp;
-
 return
