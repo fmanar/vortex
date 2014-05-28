@@ -12,19 +12,19 @@ f = fopen(file);
 data = textscan(f,'%s %s %s %s',1);
 data = textscan(f,'%s %s %s %s %s %s %s %s %s %s %s',1);
 data = textscan(f,'%s %s %u %s %u %s',1);
-Nx = data{3};
-Ny = data{5};
+s.Nx = data{3};
+s.Ny = data{5};
 
 % rest of file
-s.x = zeros(Nx,Ny);
-s.y = zeros(Nx,Ny);
-s.u = zeros(Nx,Ny);
-s.v = zeros(Nx,Ny);
+s.x = zeros( s.Nx, s.Ny );
+s.y = zeros( s.Nx, s.Ny );
+s.u = zeros( s.Nx, s.Ny );
+s.v = zeros( s.Nx, s.Ny );
 
 data = textscan(f,'%f %f %f %f %f %f %f %f %f %f %f');
 c = 1;
-for j = 1:Ny
-    for i = 1:Nx
+for j = 1:s.Ny
+    for i = 1:s.Nx
         s.x(i,j) = data{1}(c);
         s.y(i,j) = data{2}(c);
         s.u(i,j) = data{3}(c);

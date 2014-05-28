@@ -38,7 +38,7 @@ for xInd = xMinInd:xMaxInd
         vAve = vAve/N;
         
         % two window loops over square window
-        g2Sum = 0;
+        sum = 0;
         for dxInd = -radius:radius
             for dyInd = -radius:radius
                 % window radius check to make a circle
@@ -54,12 +54,16 @@ for xInd = xMinInd:xMaxInd
                     velMag = sqrt(U^2 + V^2); 
                     % cross product
                     cross = U*ry - V*rx;
-                    % cross/rMag/velMag = sin(theta)
-                    g2Sum = g2Sum + cross/rMag/velMag;
+                    if rMag && velMag
+                        % cross/rMag/velMag = sin(theta)
+                        sum = sum + cross/rMag/velMag;
+                    else
+                        sum = sum + 0;
+                    end
                 end
             end
         end           
-        g2(xInd, yInd) = g2Sum/N;
+        g2(xInd, yInd) = sum/N;
     end
 end 
 

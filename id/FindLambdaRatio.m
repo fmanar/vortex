@@ -14,9 +14,9 @@ for i = 1:s.Nx
     for j = 1:s.Ny
         delta = ( s.dudx(i,j)+s.dvdy(i,j) )^2 ...
             - 4*( s.dudx(i,j)*s.dvdy(i,j) ...
-            - s.dudy(i,j)*s.vdx(i,j) );
+            - s.dudy(i,j)*s.dvdx(i,j) );
         if delta < 0
-            real = dudx(i,j) + dvdy(i,j);
+            real = s.dudx(i,j) + s.dvdy(i,j);
             imag = sqrt( -delta );
             lratio(i,j) = real/imag;
         else

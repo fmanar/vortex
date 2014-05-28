@@ -31,18 +31,22 @@ for xInd = xMinInd:xMaxInd
                     rx = s.x(xInd+dxInd, yInd+dyInd) - s.x(xInd, yInd);
                     ry = s.y(xInd+dxInd, yInd+dyInd) - s.y(xInd, yInd);
                     rMag = sqrt(rx^2 + ry^2);
-                    velMag = sqrt(s.u(xInd+dxInd, yInd+dyInd)^2 ...
-                        + s.v(xInd+dxInd, yInd+dyInd)^2); 
+                    velMag = sqrt( s.u(xInd+dxInd, yInd+dyInd)^2 ...
+                        + s.v(xInd+dxInd, yInd+dyInd)^2 ); 
                     % cross product
                     cross = s.u(xInd+dxInd, yInd+dyInd)*ry ...
                         - s.v(xInd+dxInd, yInd+dyInd)*rx;
-                    % cross/rMag/velMag = sin(theta)
-                    sum = sum + cross/rMag/velMag;
+                    if rMag && velMag
+                        % cross/rMag/velMag = sin(theta)
+                        sum = sum + cross/rMag/velMag;
+                    else
+                        sum = sum + 0;
+                    end
                     N = N + 1;
                 end
             end
         end
-        g1 = sum/N;
+        g1(xInd, yInd) = sum/N;
     end
 end 
 
