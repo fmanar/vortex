@@ -46,4 +46,6 @@ function [v d] = OrrSomerfeld( alpha, Re, N )
 Input function spec: [ s ] = ReadXXX( file )
 	s - vector field
 	file - filename
+
+Andrew has an opinion about the standards too!
 	
